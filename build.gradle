@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.ssg'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.2'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // 서블릿 API (톰캣 등 컨테이너에서 제공, 컴파일 시에만 필요)
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+
+    // 스프링 핵심 기능 (DI, IoC 등)
+    implementation("org.springframework:spring-core:5.3.27")
+    // 스프링 컨텍스트 (ApplicationContext 등 스프링 컨테이너 관리)
+    implementation ('org.springframework:spring-context:5.3.27')
+    // 스프링 MVC 웹 프레임워크 (Controller, DispatcherServlet 등)
+    implementation ('org.springframework:spring-webmvc:5.3.27')
+    // 스프링 테스트 (JUnit 연동용)
+    testImplementation ('org.springframework:spring-test:5.3.27')
+
+    // MySQL JDBC 드라이버
+    implementation ('mysql:mysql-connector-java:8.0.22')
+    // HikariCP 커넥션 풀
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+
+    // 롬복 (Getter/Setter 자동 생성 등)
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    // Log4j2 로깅 라이브러리
+    implementation 'org.apache.logging.log4j:log4j-api:2.22.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.22.1'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.22.1'
+
+    // JSTL (JSP 표준 태그 라이브러리)
+    implementation 'jstl:jstl:1.2'
+
+    // JUnit 5 단위 테스트
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
