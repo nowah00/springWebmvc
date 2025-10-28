@@ -1,6 +1,5 @@
 package mapper;
 
-import com.ssg.springwebmvc.mapper.TimeMapper;
 import com.ssg.springwebmvc.mapper.TimeMapper2;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
