@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--해당 클래스의 위치를 명시-->
+<mapper namespace="com.ssg.springwebmvc.mapper.TimeMapper2">
+    <!--메서드의 명과 id가 동일해야함-->
+    <!--resultType 소문자로만-->
+    <select id="getNow" resultType="string">
+        SELECT NOW()
+    </select>
+
+</mapper>

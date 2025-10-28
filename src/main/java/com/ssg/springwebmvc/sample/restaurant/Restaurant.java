@@ -1,4 +1,4 @@
-package com.ssg.springwebmvc.restaurant;
+package com.ssg.springwebmvc.sample.restaurant;
 
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
